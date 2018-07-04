@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView android:src="@drawable/patient" android:layout_height="wrap_content"
+        android:layout_width="fill_parent" android:id="@+id/mobiIcon"
+        />
+
+    <TextView
+        android:id="@+id/iptext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/mobiIcon"
+        android:layout_marginTop="40dp"
+        android:text="@string/ip"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iptext"
+        android:layout_marginLeft="32dp"
+        android:layout_toRightOf="@+id/iptext"
+        android:ems="100"
+        android:inputType="text">
+
+        <requestFocus />
+    </EditText>
+    <Button android:text="@string/patientlogin" android:id="@+id/patientlogin" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+    <Button android:text="@string/patientsignup" android:id="@+id/patientsignup" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+    <Button android:text="@string/doctorlogin" android:id="@+id/doctorlogin" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+    <Button android:text="@string/doctorsignup" android:id="@+id/doctorsignup" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+    <Button android:text="@string/specialistlogin" android:id="@+id/specialistlogin" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+    <Button android:text="@string/specialistsignup" android:id="@+id/specialistsignup" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+
+</LinearLayout>
