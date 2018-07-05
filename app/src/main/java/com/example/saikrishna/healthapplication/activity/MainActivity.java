@@ -13,8 +13,6 @@ import com.newrelic.agent.android.NewRelic;
 
 public class MainActivity extends Activity {
 
-    EditText txtIpAddress;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +26,6 @@ public class MainActivity extends Activity {
     }
 
     private void init(){
-        txtIpAddress = findViewById(R.id.ip);
-        final String ipAddress = txtIpAddress.getText().toString();
 
         Button btnPatientLogin = findViewById(R.id.patientlogin);
         btnPatientLogin.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +49,6 @@ public class MainActivity extends Activity {
         btnDoctorLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.setBaseUrl(ipAddress);
                 Intent intent = new Intent(MainActivity.this,DoctorLoginActivity.class);
                 startActivity(intent);
             }
@@ -63,7 +58,6 @@ public class MainActivity extends Activity {
         btnDoctorSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.setBaseUrl(ipAddress);
                 Intent intent = new Intent(MainActivity.this,DoctorSignUpActivity.class);
                 startActivity(intent);
             }

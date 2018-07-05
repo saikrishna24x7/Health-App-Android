@@ -68,7 +68,7 @@ public class DoctorLoginActivity extends Activity {
         dialog.show();
 
         try {
-            String url = getResources().getString(R.string.doctor_base_url)+getResources().getString(R.string.login_url);
+            String url = getResources().getString(R.string.base_url) + getResources().getString(R.string.doctor_base_url) + getResources().getString(R.string.login_url);
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("username", username);
@@ -87,7 +87,7 @@ public class DoctorLoginActivity extends Activity {
                         if(responseStatus){
                             dialog.hide();
                             Intent intent = new Intent(DoctorLoginActivity.this, DoctorScreenActivity.class);
-                            intent.putExtra("user",respObject.getString("username"));
+                            intent.putExtra("doctorName",respObject.getString("username"));
                             startActivity(intent);
                         }else{
                             dialog.hide();

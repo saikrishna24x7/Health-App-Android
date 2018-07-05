@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -18,6 +19,7 @@ import com.example.saikrishna.healthapplication.adapters.PatientRecordsAdapter;
 import com.example.saikrishna.healthapplication.service.ServiceApiCallback;
 import com.example.saikrishna.healthapplication.service.ServiceApiClient;
 import com.example.saikrishna.healthapplication.utils.DividerItemDecoration;
+import com.example.saikrishna.healthapplication.utils.RecyclerTouchListener;
 import com.newrelic.com.google.gson.JsonArray;
 
 import org.json.JSONArray;
@@ -29,9 +31,8 @@ import java.util.List;
 
 public class PatientRecordsActivity extends Activity {
 
-    ListView list;
-    String[] records;
     String patientId;
+    String doctorName;
     List<String> recordsList = new ArrayList<>();
 
     RecyclerView dataRecyclerView;
@@ -41,10 +42,6 @@ public class PatientRecordsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_records);
-//        NewRelic.withApplicationToken(
-//                "AAecfdf3761f78935f1fcbd572534c3eab30d49b23"
-//        ).start(this.getApplication());
-
         init();
     }
 
@@ -59,15 +56,33 @@ public class PatientRecordsActivity extends Activity {
         dataRecyclerView.setAdapter(mAdapter);
         dataRecyclerView.invalidate();
 
+        dataRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), dataRecyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent i = new Intent(PatientRecordsActivity.this, SendToDoctor.class);
+                i.putExtra("record", recordsList.get(position));
+                i.putExtra("patientId", patientId);
+                i.putExtra("doctorName", doctorName);
+                startActivity(i);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+
         patientId = getIntent().getExtras().getString("patientId");
+        doctorName = getIntent().getExtras().getString("doctorName");
 
         final ProgressDialog dialog = new ProgressDialog(PatientRecordsActivity.this);
         dialog.setMessage("Processing...");
         dialog.setIndeterminate(true);
         dialog.setCancelable(false);
         dialog.show();
+
         try{
-            String url = getResources().getString(R.string.device_data_url);
+            String url = getResources().getString(R.string.base_url) + getResources().getString(R.string.device_data_url);
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("patientId", patientId);
             ServiceApiClient.getResponse(getApplicationContext(), url, Request.Method.POST, jsonObject, new ServiceApiCallback()
@@ -84,21 +99,6 @@ public class PatientRecordsActivity extends Activity {
                             recordsList.add(dataArray.getString(i));
                         }
                         mAdapter.notifyDataSetChanged();
-
-
-//                        PatientRecordsAdapter adapter = new PatientRecordsAdapter(PatientRecordsActivity.this, records);
-//                        list = (ListView) findViewById(R.id.list);
-//                        list.setAdapter(adapter);
-//                        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                            @Override
-//                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                                Intent i = new Intent(PatientRecordsActivity.this,SendToDoctor.class);
-//                                i.putExtra("user1", records[+position]);
-//                                i.putExtra("user",patientId);
-//                                startActivity(i);
-//                            }
-//                        });
-
                     }
                     catch (JSONException e)
                     {

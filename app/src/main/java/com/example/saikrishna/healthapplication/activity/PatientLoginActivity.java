@@ -67,7 +67,7 @@ public class PatientLoginActivity extends Activity {
         dialog.show();
 
         try {
-            String url = getResources().getString(R.string.patient_base_url)+getResources().getString(R.string.login_url);
+            String url = getResources().getString(R.string.base_url) + getResources().getString(R.string.patient_base_url)+getResources().getString(R.string.login_url);
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("username", username);
@@ -87,6 +87,7 @@ public class PatientLoginActivity extends Activity {
                             dialog.hide();
                             Intent intent = new Intent(PatientLoginActivity.this, PatientScreenActivity.class);
                             intent.putExtra("patientId",respObject.getString("username"));
+                            intent.putExtra("doctorName",respObject.getString("doctorName"));
                             startActivity(intent);
                         }else{
                             dialog.hide();

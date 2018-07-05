@@ -24,12 +24,14 @@
         <activity android:name=".activity.DoctorSignUpActivity" />
         <activity android:name=".activity.DoctorLoginActivity" />
         <activity android:name=".activity.DoctorScreenActivity" />
+        <activity android:name=".activity.DoctorViewRequestsActivity"/>
 
         <activity android:name=".activity.PatientLoginActivity" />
         <activity android:name=".activity.PatientSignUpActivity" />
         <activity android:name=".activity.PatientScreenActivity" />
 
         <activity android:name=".activity.PatientRecordsActivity" />
+        <activity android:name=".activity.SendToDoctor" />
 
         <activity android:name=".activity.SpecialistLoginActivity" />
         <activity android:name=".activity.SpecialistSignUpActivity" />

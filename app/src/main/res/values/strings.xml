@@ -33,10 +33,15 @@
     <string name="specialistsignup">Specialist Signup</string>
     <string name="specialistscreen">Specialist Screen</string>
 
-    <string name="doctor_base_url">http://192.168.250.6:8080/api/doctor/</string>
-    <string name="patient_base_url">http://192.168.250.6:8080/api/patient/</string>
-    <string name="specialist_base_url">http://192.168.250.6:8080/api/specialist/</string>
+    <string name="base_url">http://192.168.250.6:8080/</string>
+
     <string name="login_url">login</string>
     <string name="signup_url">signup</string>
-    <string name="device_data_url">http://192.168.250.6:8080/api/devicedata/getdevicedatabypatientid</string>
+
+    <string name="doctor_base_url">api/doctor/</string>
+    <string name="patient_base_url">api/patient/</string>
+    <string name="specialist_base_url">api/specialist/</string>
+    <string name="device_data_url">api/devicedata/getdevicedatabypatientid</string>
+    <string name="send_to_doctor">api/patientreport/add</string>
+    <string name="view_requests">api/patientreport/getbydoctor</string>
 </resources>
