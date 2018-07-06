@@ -21,7 +21,7 @@ import org.json.JSONObject;
 public class DoctorLoginActivity extends Activity {
 
     EditText txtUsername, txtPassword;
-    Button btnLogin;
+    Button btnLogin, btnSpecialistLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,15 @@ public class DoctorLoginActivity extends Activity {
             @Override
             public void onClick(View view) {
                 login();
+            }
+        });
+
+        btnSpecialistLogin = findViewById(R.id.signinSpecialist);
+        btnSpecialistLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DoctorLoginActivity.this,SpecialistLoginActivity.class);
+                startActivity(intent);
             }
         });
     }

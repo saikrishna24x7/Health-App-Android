@@ -59,8 +59,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
+        android:ems="100"
         android:layout_marginTop="24dp"
         android:onClick="signin"
         android:text="@string/signin" />
+
+    <Button
+        android:id="@+id/signinSpecialist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signin"
+        android:layout_centerHorizontal="true"
+        android:ems="100"
+        android:layout_marginTop="24dp"
+        android:onClick="signin"
+        android:text="@string/specialistlogin" />
 
 </RelativeLayout>

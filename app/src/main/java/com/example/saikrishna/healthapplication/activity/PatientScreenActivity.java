@@ -45,7 +45,9 @@ public class PatientScreenActivity extends Activity {
         btnViewSuggestions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(PatientScreenActivity.this, PatientCommentsActivity.class);
+                intent.putExtra("patientId", patientId);
+                startActivity(intent);
             }
         });
 

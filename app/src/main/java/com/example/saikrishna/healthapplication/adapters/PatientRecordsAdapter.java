@@ -16,8 +16,6 @@ import java.util.List;
 
 public class PatientRecordsAdapter extends RecyclerView.Adapter<PatientRecordsAdapter.PatientReocrdsViewHolder> {
 
-    String names[];
-
     private List<String> data;
 
     public PatientRecordsAdapter(List<String> data){
@@ -49,7 +47,7 @@ public class PatientRecordsAdapter extends RecyclerView.Adapter<PatientRecordsAd
         public PatientReocrdsViewHolder(View view)
         {
             super(view);
-            data = (TextView) view.findViewById(R.id.txtData);
+            data = view.findViewById(R.id.txtData);
         }
     }
 

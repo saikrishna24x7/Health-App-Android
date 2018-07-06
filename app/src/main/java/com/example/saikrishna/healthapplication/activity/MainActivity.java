@@ -63,22 +63,22 @@ public class MainActivity extends Activity {
             }
         });
 
-        Button btnSpecialistLogin = findViewById(R.id.specialistlogin);
-        btnSpecialistLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,SpecialistLoginActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button btnSpecialistSignUp = findViewById(R.id.specialistsignup);
-        btnSpecialistSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,SpecialistSignUpActivity.class);
-                startActivity(intent);
-            }
-        });
+//        Button btnSpecialistLogin = findViewById(R.id.specialistlogin);
+//        btnSpecialistLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this,SpecialistLoginActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        Button btnSpecialistSignUp = findViewById(R.id.specialistsignup);
+//        btnSpecialistSignUp.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this,SpecialistSignUpActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 }

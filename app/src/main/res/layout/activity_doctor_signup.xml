@@ -117,16 +117,27 @@
         android:id="@+id/LinearLayout02"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_below="@+id/contact">
-
+        android:layout_below="@+id/contact"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:ems="100"
             android:text="@string/signup">
         </Button>
+
+        <Button
+            android:id="@+id/signupSpecialist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="100"
+            android:text="@string/specialistsignup">
+        </Button>
     </LinearLayout>
+
 
 </RelativeLayout>

@@ -44,4 +44,7 @@
     <string name="device_data_url">api/devicedata/getdevicedatabypatientid</string>
     <string name="send_to_doctor">api/patientreport/add</string>
     <string name="view_requests">api/patientreport/getbydoctor</string>
+
+    <string name="view_comments">api/comments/get</string>
+    <string name="send_comments">api/comments/add</string>
 </resources>

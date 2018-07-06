@@ -28,7 +28,7 @@ public class DoctorScreenActivity extends Activity {
         btnViewRequests.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DoctorScreenActivity.this, DoctorViewRequestsActivity.class);
+                Intent intent = new Intent(DoctorScreenActivity.this, DoctorRequestsActivity.class);
                 intent.putExtra("doctorName", doctorName);
                 startActivity(intent);
             }
