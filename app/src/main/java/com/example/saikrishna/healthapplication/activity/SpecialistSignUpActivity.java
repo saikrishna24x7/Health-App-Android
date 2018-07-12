@@ -95,7 +95,7 @@ public class SpecialistSignUpActivity extends Activity {
         dialog.show();
 
         try {
-            String url = getResources().getString(R.string.specialist_base_url) + getResources().getString(R.string.signup_url);
+            String url = getResources().getString(R.string.base_url) + getResources().getString(R.string.specialist_base_url) + getResources().getString(R.string.signup_url);
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("username", username);

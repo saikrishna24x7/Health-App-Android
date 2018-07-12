@@ -66,7 +66,7 @@ public class SpecialistLoginActivity extends Activity {
         dialog.show();
 
         try {
-            String url = getResources().getString(R.string.specialist_base_url)+getResources().getString(R.string.login_url);
+            String url = getResources().getString(R.string.base_url) + getResources().getString(R.string.specialist_base_url)+getResources().getString(R.string.login_url);
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("username", username);
@@ -85,7 +85,7 @@ public class SpecialistLoginActivity extends Activity {
                         if(responseStatus){
                             dialog.hide();
                             Intent intent = new Intent(SpecialistLoginActivity.this, SpecialistScreenActivity.class);
-                            intent.putExtra("user",respObject.getString("username"));
+                            intent.putExtra("specialistName",respObject.getString("username"));
                             startActivity(intent);
                         }else{
                             dialog.hide();

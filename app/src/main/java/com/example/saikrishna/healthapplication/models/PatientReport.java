@@ -8,6 +8,7 @@ public class PatientReport implements Serializable {
     private String doctorName;
     private String status;
     private byte[] image;
+    private String specialistName;
 
     public PatientReport() {
     }
@@ -50,5 +51,13 @@ public class PatientReport implements Serializable {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public String getSpecialistName() {
+        return specialistName;
+    }
+
+    public void setSpecialistName(String specialistName) {
+        this.specialistName = specialistName;
     }
 }

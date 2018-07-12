@@ -38,6 +38,8 @@
         <activity android:name=".activity.SpecialistLoginActivity" />
         <activity android:name=".activity.SpecialistSignUpActivity" />
         <activity android:name=".activity.SpecialistScreenActivity" />
+        <activity android:name=".activity.SpecialistRequestsActivity" />
+        <activity android:name=".activity.SpecialistViewRequestActivity" />
 
         <activity android:name=".activity.RequestViewActivity" />
 

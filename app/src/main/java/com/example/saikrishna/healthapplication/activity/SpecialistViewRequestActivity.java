@@ -23,38 +23,36 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DoctorViewRequestActivity extends Activity {
-
+public class SpecialistViewRequestActivity extends Activity{
     ImageView imgPatientImage;
     EditText txtComment;
-    Button btnSendToPatient, btnSendToSpecialist;
-    String doctorName, patientId;
+    Button btnSendToPatient;
+    String specialistName, patientId;
     int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_view_request);
+        setContentView(R.layout.activity_specialist_view_request);
         init();
     }
 
     private void init(){
-
-        doctorName = getIntent().getExtras().getString("doctorName");
+        specialistName = getIntent().getExtras().getString("specialistName");
         patientId = getIntent().getExtras().getString("patientId");
         position = getIntent().getExtras().getInt("position");
         imgPatientImage = findViewById(R.id.patientimage);
 
-        final ProgressDialog dialog = new ProgressDialog(DoctorViewRequestActivity.this);
+        final ProgressDialog dialog = new ProgressDialog(SpecialistViewRequestActivity.this);
         dialog.setMessage("Processing...");
         dialog.setIndeterminate(true);
         dialog.setCancelable(false);
         dialog.show();
 
         try {
-            String url = getResources().getString(R.string.base_url) + getResources().getString(R.string.view_requests);
+            String url = getResources().getString(R.string.base_url) + getResources().getString(R.string.view_specialist_requests);
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("doctorName", doctorName);
+            jsonObject.put("specialistName", specialistName);
             ServiceApiClient.getResponse(getApplicationContext(), url, Request.Method.POST, jsonObject, new ServiceApiCallback()
             {
                 @Override
@@ -86,27 +84,20 @@ public class DoctorViewRequestActivity extends Activity {
         }catch (Exception e){
 
         }
-        txtComment = findViewById(R.id.comment);
-        btnSendToPatient = findViewById(R.id.send);
+
+        txtComment = findViewById(R.id.commentSpecialist);
+        btnSendToPatient = findViewById(R.id.sendSpecialist);
         btnSendToPatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sendComment();
             }
         });
-
-        btnSendToSpecialist = findViewById(R.id.sendToSpecialist);
-        btnSendToSpecialist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendToSpecialist();
-            }
-        });
     }
 
     private void sendComment(){
         String comment = txtComment.getText().toString();
-        final ProgressDialog dialog = new ProgressDialog(DoctorViewRequestActivity.this);
+        final ProgressDialog dialog = new ProgressDialog(SpecialistViewRequestActivity.this);
         dialog.setMessage("Processing...");
         dialog.setIndeterminate(true);
         dialog.setCancelable(false);
@@ -115,7 +106,7 @@ public class DoctorViewRequestActivity extends Activity {
         try {
             String url = getResources().getString(R.string.base_url) + getResources().getString(R.string.send_comments);
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("commentorName", doctorName);
+            jsonObject.put("commentorName", specialistName);
             jsonObject.put("comment", comment);
             jsonObject.put("patientId", patientId);
 
@@ -129,54 +120,9 @@ public class DoctorViewRequestActivity extends Activity {
                         JSONObject respObject = new JSONObject(response);
                         Log.d("response:", respObject.toString());
                         dialog.hide();
-                        Toast.makeText(DoctorViewRequestActivity.this, "Comments sent to patient", Toast.LENGTH_LONG).show();
-//                        Intent intent = new Intent(DoctorViewRequestActivity.this,DoctorScreenActivity.class);
-//                        intent.putExtra("doctorName",doctorName);
-//                        startActivity(intent);
-                    }
-                    catch (JSONException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-                @Override
-                public void onFailureResponse(String message)
-                {
-                    dialog.hide();
-                    Toast.makeText(getApplicationContext(), "Error:"+message, Toast.LENGTH_LONG).show();
-                }
-            });
-        }catch (Exception e){
-
-        }
-    }
-
-    private void sendToSpecialist(){
-        final ProgressDialog dialog = new ProgressDialog(DoctorViewRequestActivity.this);
-        dialog.setMessage("Processing...");
-        dialog.setIndeterminate(true);
-        dialog.setCancelable(false);
-        dialog.show();
-        try {
-
-            String url = getResources().getString(R.string.base_url) + getResources().getString(R.string.send_to_specialist);
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("specialistName", "Vinay");
-            jsonObject.put("patientID", patientId);
-//            Log.d("json:", jsonObject.toString());
-            ServiceApiClient.getResponse(getApplicationContext(), url, Request.Method.POST, jsonObject, new ServiceApiCallback()
-            {
-                @Override
-                public void onSuccessResponse(String response)
-                {
-                    try
-                    {
-                        JSONObject respObject = new JSONObject(response);
-//                        Log.d("response:", respObject.toString());
-                        dialog.hide();
-                        Toast.makeText(DoctorViewRequestActivity.this, "Patient Data sent to Specialist", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(DoctorViewRequestActivity.this,DoctorScreenActivity.class);
-                        intent.putExtra("doctorName",doctorName);
+                        Toast.makeText(SpecialistViewRequestActivity.this, "Comments sent to patient", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(SpecialistViewRequestActivity.this,DoctorScreenActivity.class);
+                        intent.putExtra("specialistName",specialistName);
                         startActivity(intent);
                     }
                     catch (JSONException e)

@@ -26,12 +26,14 @@
     <string name="doctorscreen">Doctor Screen</string>
     <string name="doctorname">Doctor Name</string>
     <string name="image">Upload File</string>
-    <string name="send">Send</string>
+    <string name="send">Send to Patient</string>
     <string name="viewrequest">View Requests</string>
     <string name="comment">Comments</string>
     <string name="specialistlogin">Specialist Login</string>
     <string name="specialistsignup">Specialist Signup</string>
     <string name="specialistscreen">Specialist Screen</string>
+
+    <string name="sendToSpecialist">Send to Specialist</string>
 
     <string name="base_url">http://192.168.250.6:8080/</string>
 
@@ -44,7 +46,10 @@
     <string name="device_data_url">api/devicedata/getdevicedatabypatientid</string>
     <string name="send_to_doctor">api/patientreport/add</string>
     <string name="view_requests">api/patientreport/getbydoctor</string>
+    <string name="view_specialist_requests">api/patientreport/getbyspecialist</string>
 
     <string name="view_comments">api/comments/get</string>
     <string name="send_comments">api/comments/add</string>
+
+    <string name="send_to_specialist">api/patientreport/update</string>
 </resources>
