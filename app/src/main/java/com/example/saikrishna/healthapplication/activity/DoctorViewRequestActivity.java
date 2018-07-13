@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +25,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DoctorViewRequestActivity extends Activity {
+public class DoctorViewRequestActivity extends AppCompatActivity {
 
     ImageView imgPatientImage;
     EditText txtComment;
@@ -39,6 +41,10 @@ public class DoctorViewRequestActivity extends Activity {
     }
 
     private void init(){
+
+        Toolbar toolbar = findViewById(R.id.toolbarDoctorViewRequest);
+        setSupportActionBar(toolbar);
+        setTitle(R.string.title);
 
         doctorName = getIntent().getExtras().getString("doctorName");
         patientId = getIntent().getExtras().getString("patientId");

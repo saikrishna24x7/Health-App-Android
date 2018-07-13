@@ -41,8 +41,6 @@
         <activity android:name=".activity.SpecialistRequestsActivity" />
         <activity android:name=".activity.SpecialistViewRequestActivity" />
 
-        <activity android:name=".activity.RequestViewActivity" />
-
     </application>
 
 </manifest>

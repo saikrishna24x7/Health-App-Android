@@ -3,9 +3,11 @@ package com.example.saikrishna.healthapplication.activity;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -22,7 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PatientCommentsActivity extends Activity {
+public class PatientCommentsActivity extends AppCompatActivity {
 
     RecyclerView dataRecyclerView;
     PatientCommentsAdapter mAdapter;
@@ -37,6 +39,11 @@ public class PatientCommentsActivity extends Activity {
     }
 
     private void init(){
+
+        Toolbar toolbar = findViewById(R.id.toolbarPatientComments);
+        setSupportActionBar(toolbar);
+        setTitle(R.string.title);
+
         patientId = getIntent().getExtras().getString("patientId");
 
         dataRecyclerView = findViewById(R.id.recyclerViewPatientRecords);

@@ -1,11 +1,12 @@
 package com.example.saikrishna.healthapplication.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SpecialistViewRequestActivity extends Activity{
+public class SpecialistViewRequestActivity extends AppCompatActivity {
     ImageView imgPatientImage;
     EditText txtComment;
     Button btnSendToPatient;
@@ -38,6 +39,11 @@ public class SpecialistViewRequestActivity extends Activity{
     }
 
     private void init(){
+
+        Toolbar toolbar = findViewById(R.id.toolbarSpecialistViewRequest);
+        setSupportActionBar(toolbar);
+        setTitle(R.string.title);
+
         specialistName = getIntent().getExtras().getString("specialistName");
         patientId = getIntent().getExtras().getString("patientId");
         position = getIntent().getExtras().getInt("position");

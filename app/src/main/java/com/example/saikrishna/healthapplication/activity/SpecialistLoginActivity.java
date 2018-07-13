@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +19,7 @@ import com.example.saikrishna.healthapplication.service.ServiceApiClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SpecialistLoginActivity extends Activity {
+public class SpecialistLoginActivity extends AppCompatActivity {
     EditText txtUsername, txtPassword;
     Button btnLogin;
 
@@ -33,6 +35,11 @@ public class SpecialistLoginActivity extends Activity {
     }
 
     private void init(){
+
+        Toolbar toolbar = findViewById(R.id.toolbarSpecialistLogin);
+        setSupportActionBar(toolbar);
+        setTitle(R.string.title);
+
         txtUsername = findViewById(R.id.username);
         txtPassword = findViewById(R.id.password);
         btnLogin = findViewById(R.id.signin);

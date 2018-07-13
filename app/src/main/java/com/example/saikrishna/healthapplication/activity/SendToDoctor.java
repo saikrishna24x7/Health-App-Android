@@ -7,6 +7,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +27,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.Base64;
 
-public class SendToDoctor extends Activity {
+public class SendToDoctor extends AppCompatActivity {
 
     Button btnUploadImage, btnSendToDoctor;
     String patientId, doctorName, record;
@@ -39,6 +41,11 @@ public class SendToDoctor extends Activity {
     }
 
     private void init(){
+
+        Toolbar toolbar = findViewById(R.id.toolbarSendToDoctor);
+        setSupportActionBar(toolbar);
+        setTitle(R.string.title);
+
         patientId = getIntent().getExtras().getString("patientId");
         doctorName = getIntent().getExtras().getString("doctorName");
         record = getIntent().getExtras().getString("record");

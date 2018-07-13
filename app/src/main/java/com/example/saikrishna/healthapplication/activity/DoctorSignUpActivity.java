@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +23,7 @@ import com.newrelic.agent.android.NewRelic;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DoctorSignUpActivity extends Activity {
+public class DoctorSignUpActivity extends AppCompatActivity {
 
     EditText txtUsername, txtPassword, txtAddress, txtEmail, txtContact;
     Button btnSignUp, btnSpecialistSignUp;
@@ -38,6 +40,11 @@ public class DoctorSignUpActivity extends Activity {
     }
 
     private void init(){
+
+        Toolbar toolbar = findViewById(R.id.toolbarDoctorSignup);
+        setSupportActionBar(toolbar);
+        setTitle(R.string.title);
+
         txtUsername = findViewById(R.id.username);
         txtPassword = findViewById(R.id.password);
         txtAddress = findViewById(R.id.address);

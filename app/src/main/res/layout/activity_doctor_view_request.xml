@@ -1,29 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    >
-    <ImageView android:layout_height="300dp"
-        android:layout_width="300dp" android:id="@+id/patientimage"
-        />
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activity.DoctorViewRequestActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/comment"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <include
+        android:id="@+id/toolbarDoctorViewRequest"
+        layout="@layout/toolbar" />
 
-    <EditText
-        android:id="@+id/comment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="100"
-        android:inputType="text">
-        <requestFocus />
-    </EditText>
-    <Button android:text="@string/send" android:id="@+id/send" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-    <Button android:text="@string/sendToSpecialist" android:id="@+id/sendToSpecialist" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</LinearLayout>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@android:dimen/notification_large_icon_height">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="@string/title_comments"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <ImageView
+                android:id="@+id/patientimage"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:contentDescription="TODO" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/comment"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="100"
+                android:inputType="text">
+            </EditText>
+
+            <Button
+                android:id="@+id/send"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/send" />
+
+            <Button
+                android:id="@+id/sendToSpecialist"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sendToSpecialist" />
+
+        </LinearLayout>
+    </ScrollView>
+</android.support.design.widget.CoordinatorLayout>

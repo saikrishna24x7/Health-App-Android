@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -32,7 +34,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoctorRequestsActivity extends Activity {
+public class DoctorRequestsActivity extends AppCompatActivity {
 
     List<PatientReport> reportList = new ArrayList<>();
 
@@ -48,6 +50,11 @@ public class DoctorRequestsActivity extends Activity {
     }
 
     private void init(){
+
+        Toolbar toolbar = findViewById(R.id.toolbarDoctorRequests);
+        setSupportActionBar(toolbar);
+        setTitle(R.string.title);
+
         doctorName = getIntent().getExtras().getString("doctorName");
         requestRecyclerView = findViewById(R.id.recyclerViewDoctorRequests);
         mAdapter = new DoctorRequestsAdapter(reportList);

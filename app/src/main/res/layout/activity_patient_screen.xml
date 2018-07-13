@@ -1,23 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    >
-    <ImageView android:src="@drawable/patient" android:layout_height="wrap_content"
-        android:layout_width="fill_parent" android:id="@+id/mobiIcon"
-        />
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activity.PatientScreenActivity">
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+    <include android:id="@+id/toolbarPatientScreen"
+        layout="@layout/toolbar" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:text="@string/patientscreen"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    <Button android:text="@string/sensor" android:id="@+id/sensor" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-    <Button android:text="@string/suggestion" android:id="@+id/suggestion" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-    <Button android:text="@string/logout" android:id="@+id/logout" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+        android:paddingTop="@android:dimen/notification_large_icon_height">
+        <ImageView android:src="@drawable/patient" android:layout_height="wrap_content"
+            android:layout_width="fill_parent" android:id="@+id/mobiIcon"
+            />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:text="@string/patientscreen"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+        <Button android:text="@string/sensor" android:id="@+id/sensor" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+        <Button android:text="@string/suggestion" android:id="@+id/suggestion" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+        <Button android:text="@string/logout" android:id="@+id/logout" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
+
+

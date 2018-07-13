@@ -1,18 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    >
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activity.MainActivity">
 
-    <ImageView android:src="@drawable/patient" android:layout_height="wrap_content"
-        android:layout_width="fill_parent" android:id="@+id/mobiIcon"
-        />
+    <include android:id="@+id/toolbarMain"
+        layout="@layout/toolbar" />
 
-    <Button android:text="@string/patientlogin" android:id="@+id/patientlogin" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-    <Button android:text="@string/patientsignup" android:id="@+id/patientsignup" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-    <Button android:text="@string/doctorlogin" android:id="@+id/doctorlogin" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-    <Button android:text="@string/doctorsignup" android:id="@+id/doctorsignup" android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-    <!--<Button android:text="@string/specialistlogin" android:id="@+id/specialistlogin" android:layout_width="fill_parent" android:layout_height="wrap_content"/>-->
-    <!--<Button android:text="@string/specialistsignup" android:id="@+id/specialistsignup" android:layout_width="fill_parent" android:layout_height="wrap_content"/>-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@android:dimen/notification_large_icon_height">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/mobiIcon"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@android:dimen/app_icon_size"
+            android:src="@drawable/patient" />
+
+        <Button
+            android:id="@+id/patientlogin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/patientlogin" />
+
+        <Button
+            android:id="@+id/patientsignup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/patientsignup" />
+
+        <Button
+            android:id="@+id/doctorlogin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/doctorlogin" />
+
+        <Button
+            android:id="@+id/doctorsignup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/doctorsignup" />
+        <!--<Button android:text="@string/specialistlogin" android:id="@+id/specialistlogin" android:layout_width="fill_parent" android:layout_height="wrap_content"/>-->
+        <!--<Button android:text="@string/specialistsignup" android:id="@+id/specialistsignup" android:layout_width="fill_parent" android:layout_height="wrap_content"/>-->
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

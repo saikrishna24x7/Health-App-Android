@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Toast;
@@ -28,7 +30,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpecialistRequestsActivity extends Activity {
+public class SpecialistRequestsActivity extends AppCompatActivity {
 
     List<PatientReport> reportList = new ArrayList<>();
 
@@ -45,6 +47,11 @@ public class SpecialistRequestsActivity extends Activity {
     }
 
     private void init(){
+
+        Toolbar toolbar = findViewById(R.id.toolbarSpecialistRequests);
+        setSupportActionBar(toolbar);
+        setTitle(R.string.title);
+
         specialistName = getIntent().getExtras().getString("specialistName");
         requestRecyclerView = findViewById(R.id.recyclerViewSpecialistRequests);
         mAdapter = new SpecialistRequestsAdapter(reportList);

@@ -1,5 +1,11 @@
 package com.example.saikrishna.healthapplication.utils;
 
+import android.util.Log;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,11 +27,17 @@ public class Utils {
         return flag;
     }
 
-    public static void setBaseUrl(String u){
-        baseUrl = "http://"+u+"/api/";
-    }
-
-    public static String getBaseUrl(){
-        return baseUrl;
+    public static String formatTimestamp(String inputString){
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss");
+//        Date date = new Date(Long.valueOf(inputString.replace("T", " ")));
+        Date date = null;
+        try {
+            date = dateFormat.parse(inputString.replace("T", " "));
+        } catch (ParseException e) {
+            Log.d("Exception:", "Format Exception");
+        }
+        String convertedDate = dateFormat.format(date);
+        return convertedDate;
     }
 }
