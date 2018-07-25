@@ -25,6 +25,7 @@
     <string name="doctorsignup">Doctor Signup</string>
     <string name="signup">Sign up</string>
     <string name="address">Address</string>
+    <string name="login">Login</string>
     <string name="login2">Doctor Login</string>
     <string name="login1">Patient Login</string>
     <string name="signin">Sign in</string>
@@ -44,7 +45,9 @@
     <string name="specialistscreen">Specialist</string>
     <string name="sendToSpecialist">Send to Specialist</string>
 
-    <string name="base_url">http://192.168.250.6:8080/</string>
+    <string name="returnToRecords">Return to Requests</string>
+
+    <string name="base_url">http://192.168.250.9:8080/</string>
 
     <string name="login_url">login</string>
     <string name="signup_url">signup</string>

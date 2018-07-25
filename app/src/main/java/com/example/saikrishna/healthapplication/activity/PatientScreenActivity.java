@@ -61,12 +61,9 @@ public class PatientScreenActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logout();
+                Intent intent = new Intent(PatientScreenActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
-    }
-
-    private void logout(){
-
     }
 }

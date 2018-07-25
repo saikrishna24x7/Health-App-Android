@@ -29,7 +29,7 @@ public class DoctorViewRequestActivity extends AppCompatActivity {
 
     ImageView imgPatientImage1, imgPatientImage2, imgPatientImage3;
     EditText txtComment;
-    Button btnSendToPatient, btnSendToSpecialist;
+    Button btnSendToPatient, btnSendToSpecialist, btnReturnToRecords, btnLogout;
     String doctorName, patientId;
     int position;
 
@@ -120,6 +120,26 @@ public class DoctorViewRequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendToSpecialist();
+            }
+        });
+
+        btnReturnToRecords = findViewById(R.id.returnToRecords);
+        btnReturnToRecords.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DoctorViewRequestActivity.this,DoctorRequestsActivity.class);
+                intent.putExtra("doctorName",doctorName);
+                startActivity(intent);
+            }
+        });
+
+        btnLogout = findViewById(R.id.logoutDoctorViewRequest);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DoctorViewRequestActivity.this,MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
     }

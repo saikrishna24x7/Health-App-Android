@@ -15,6 +15,15 @@
         android:orientation="vertical"
         android:layout_gravity="center_vertical">
 
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/signup"
+            android:paddingBottom="@android:dimen/notification_large_icon_height"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"

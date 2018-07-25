@@ -12,7 +12,7 @@ import com.example.saikrishna.healthapplication.R;
 
 public class DoctorScreenActivity extends AppCompatActivity {
 
-    Button btnViewRequests;
+    Button btnViewRequests, btnLogout;
     String doctorName;
 
     @Override
@@ -36,6 +36,15 @@ public class DoctorScreenActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(DoctorScreenActivity.this, DoctorRequestsActivity.class);
                 intent.putExtra("doctorName", doctorName);
+                startActivity(intent);
+            }
+        });
+
+        btnLogout = findViewById(R.id.logoutDoctorScreen);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DoctorScreenActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

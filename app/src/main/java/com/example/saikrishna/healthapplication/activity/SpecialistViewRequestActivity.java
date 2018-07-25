@@ -27,7 +27,7 @@ import org.json.JSONObject;
 public class SpecialistViewRequestActivity extends AppCompatActivity {
     ImageView imgPatientImage1, imgPatientImage2, imgPatientImage3;
     EditText txtComment;
-    Button btnSendToPatient;
+    Button btnSendToPatient, btnReturnToRecords, btnLogout;
     String specialistName, patientId;
     int position;
 
@@ -111,6 +111,26 @@ public class SpecialistViewRequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendComment();
+            }
+        });
+
+        btnReturnToRecords = findViewById(R.id.returnToRecordsSpecialist);
+        btnReturnToRecords.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SpecialistViewRequestActivity.this,SpecialistRequestsActivity.class);
+                intent.putExtra("specialistName",specialistName);
+                startActivity(intent);
+            }
+        });
+
+        btnLogout = findViewById(R.id.logoutSpecialistViewRequest);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SpecialistViewRequestActivity.this,MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
     }

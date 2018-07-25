@@ -73,6 +73,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/send_patient" />
 
+            <Button
+                android:id="@+id/returnToRecordsSpecialist"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/returnToRecords" />
+
+            <Button
+                android:id="@+id/logoutSpecialistViewRequest"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/logout" />
+
         </LinearLayout>
     </ScrollView>
 </android.support.design.widget.CoordinatorLayout>
