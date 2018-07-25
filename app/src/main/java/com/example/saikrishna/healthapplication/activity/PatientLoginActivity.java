@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -75,7 +76,7 @@ public class PatientLoginActivity extends AppCompatActivity {
 
         try {
             String url = getResources().getString(R.string.base_url) + getResources().getString(R.string.patient_base_url)+getResources().getString(R.string.login_url);
-
+            Log.d("URL:", url);
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("username", username);
             jsonObject.put("password", password);
@@ -115,7 +116,7 @@ public class PatientLoginActivity extends AppCompatActivity {
             });
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 

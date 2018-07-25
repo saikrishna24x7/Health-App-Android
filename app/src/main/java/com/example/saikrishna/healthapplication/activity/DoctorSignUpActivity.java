@@ -26,7 +26,7 @@ import org.json.JSONObject;
 public class DoctorSignUpActivity extends AppCompatActivity {
 
     EditText txtUsername, txtPassword, txtAddress, txtEmail, txtContact;
-    Button btnSignUp, btnSpecialistSignUp;
+    Button btnSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +56,6 @@ public class DoctorSignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 signup();
-            }
-        });
-
-        btnSpecialistSignUp = findViewById(R.id.signupSpecialist);
-        btnSpecialistSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DoctorSignUpActivity.this,SpecialistSignUpActivity.class);
-                startActivity(intent);
             }
         });
     }

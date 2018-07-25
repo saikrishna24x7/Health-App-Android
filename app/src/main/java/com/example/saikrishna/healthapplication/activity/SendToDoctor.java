@@ -2,16 +2,20 @@ package com.example.saikrishna.healthapplication.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ClipData;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -24,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.InputStream;
 import java.util.Base64;
 
@@ -31,7 +36,8 @@ public class SendToDoctor extends AppCompatActivity {
 
     Button btnUploadImage, btnSendToDoctor;
     String patientId, doctorName, record;
-    Bitmap sourceBitmap;
+    Bitmap sourceBitmap1, sourceBitmap2, sourceBitmap3;
+    TextView txtImageNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +56,15 @@ public class SendToDoctor extends AppCompatActivity {
         doctorName = getIntent().getExtras().getString("doctorName");
         record = getIntent().getExtras().getString("record");
 
+        txtImageNames = findViewById(R.id.imageNames);
+
         btnUploadImage = findViewById(R.id.uploadImage);
         btnUploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+//                photoPickerIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+//                photoPickerIntent.setAction(Intent.ACTION_GET_CONTENT);
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, 1);
             }
@@ -77,20 +87,58 @@ public class SendToDoctor extends AppCompatActivity {
             try {
                 final Uri imageUri = data.getData();
                 final InputStream imageStream = getContentResolver().openInputStream(imageUri);
-                sourceBitmap = BitmapFactory.decodeStream(imageStream);
+                if(sourceBitmap1 == null) {
+                    sourceBitmap1 = BitmapFactory.decodeStream(imageStream);
+                }else if(sourceBitmap2 == null){
+                    sourceBitmap2 = BitmapFactory.decodeStream(imageStream);
+                }else if(sourceBitmap3 == null){
+                    sourceBitmap3 = BitmapFactory.decodeStream(imageStream);
+                }
+                txtImageNames.setText(txtImageNames.getText().toString() + "\n" + getPath(imageUri));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
+    public String getPath(Uri uri) {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String filePath = cursor.getString(column_index);
+        return filePath.split("/")[filePath.split("/").length-1];
+    }
+
     private void sendToDoctor(){
-        int height = sourceBitmap.getHeight();
-        int width = sourceBitmap.getWidth();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] image = stream.toByteArray();
-        sourceBitmap.recycle();
+
+        int height = sourceBitmap1.getHeight();
+        int width = sourceBitmap1.getWidth();
+
+        byte[] image1 = new byte[0], image2 = new byte[0], image3 = new byte[0];
+
+        if(sourceBitmap1 !=null){
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            sourceBitmap1.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            image1 = stream.toByteArray();
+            sourceBitmap1.recycle();
+        }
+
+        if(sourceBitmap2 !=null){
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            sourceBitmap2.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            image2 = stream.toByteArray();
+            sourceBitmap2.recycle();
+        }
+
+        if(sourceBitmap3 !=null){
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            sourceBitmap3.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            image3 = stream.toByteArray();
+            sourceBitmap3.recycle();
+        }
+
+
         final ProgressDialog dialog = new ProgressDialog(SendToDoctor.this);
         dialog.setMessage("Processing...");
         dialog.setIndeterminate(true);
@@ -105,9 +153,19 @@ public class SendToDoctor extends AppCompatActivity {
             jsonObject.put("patientData", record);
             jsonObject.put("height", height);
             jsonObject.put("width", width);
-            String encodedImage = new String(org.apache.commons.codec.binary.Base64.encodeBase64(image));
-            jsonObject.put("image", encodedImage);
-            Log.d("json:", jsonObject.toString());
+            if(sourceBitmap1 !=null){
+                String encodedImage = new String(org.apache.commons.codec.binary.Base64.encodeBase64(image1));
+                jsonObject.put("image1", encodedImage);
+            }
+            if(sourceBitmap2 !=null){
+                String encodedImage = new String(org.apache.commons.codec.binary.Base64.encodeBase64(image2));
+                jsonObject.put("image2", encodedImage);
+            }
+            if(sourceBitmap3 !=null){
+                String encodedImage = new String(org.apache.commons.codec.binary.Base64.encodeBase64(image3));
+                jsonObject.put("image3", encodedImage);
+            }
+
             String url = getResources().getString(R.string.base_url) + getResources().getString(R.string.send_to_doctor);
 
             ServiceApiClient.getResponse(getApplicationContext(), url, Request.Method.POST, jsonObject, new ServiceApiCallback()

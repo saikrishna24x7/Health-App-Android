@@ -7,7 +7,9 @@ public class PatientReport implements Serializable {
     private String patientData;
     private String doctorName;
     private String status;
-    private byte[] image;
+    private byte[] image1;
+    private byte[] image2;
+    private byte[] image3;
     private String specialistName;
 
     public PatientReport() {
@@ -45,12 +47,28 @@ public class PatientReport implements Serializable {
         this.status = status;
     }
 
-    public byte[] getImage() {
-        return image;
+    public byte[] getImage1() {
+        return image1;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setImage1(byte[] image1) {
+        this.image1 = image1;
+    }
+
+    public byte[] getImage2() {
+        return image2;
+    }
+
+    public void setImage2(byte[] image2) {
+        this.image2 = image2;
+    }
+
+    public byte[] getImage3() {
+        return image3;
+    }
+
+    public void setImage3(byte[] image3) {
+        this.image3 = image3;
     }
 
     public String getSpecialistName() {

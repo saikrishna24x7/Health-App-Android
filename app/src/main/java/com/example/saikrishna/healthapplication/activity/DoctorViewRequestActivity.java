@@ -27,7 +27,7 @@ import org.json.JSONObject;
 
 public class DoctorViewRequestActivity extends AppCompatActivity {
 
-    ImageView imgPatientImage;
+    ImageView imgPatientImage1, imgPatientImage2, imgPatientImage3;
     EditText txtComment;
     Button btnSendToPatient, btnSendToSpecialist;
     String doctorName, patientId;
@@ -49,7 +49,9 @@ public class DoctorViewRequestActivity extends AppCompatActivity {
         doctorName = getIntent().getExtras().getString("doctorName");
         patientId = getIntent().getExtras().getString("patientId");
         position = getIntent().getExtras().getInt("position");
-        imgPatientImage = findViewById(R.id.patientimage);
+        imgPatientImage1 = findViewById(R.id.patientimage1);
+        imgPatientImage2 = findViewById(R.id.patientimage2);
+        imgPatientImage3 = findViewById(R.id.patientimage3);
 
         final ProgressDialog dialog = new ProgressDialog(DoctorViewRequestActivity.this);
         dialog.setMessage("Processing...");
@@ -59,7 +61,7 @@ public class DoctorViewRequestActivity extends AppCompatActivity {
 
         try {
             String url = getResources().getString(R.string.base_url) + getResources().getString(R.string.view_requests);
-            JSONObject jsonObject = new JSONObject();
+            final JSONObject jsonObject = new JSONObject();
             jsonObject.put("doctorName", doctorName);
             ServiceApiClient.getResponse(getApplicationContext(), url, Request.Method.POST, jsonObject, new ServiceApiCallback()
             {
@@ -73,9 +75,21 @@ public class DoctorViewRequestActivity extends AppCompatActivity {
                         dialog.hide();
                         JSONArray dataArray = respObject.getJSONArray("patientReports");
                         JSONObject patientReportObject = dataArray.getJSONObject(position);
-                        byte[] image = Base64.decode(patientReportObject.getString("image"), 0);
-                        Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-                        imgPatientImage.setImageBitmap(bitmap);
+                        if (patientReportObject.getString("image1") != null){
+                            byte[] image = Base64.decode(patientReportObject.getString("image1"), 0);
+                            Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                            imgPatientImage1.setImageBitmap(bitmap);
+                        }
+                        if (patientReportObject.getString("image2") != null){
+                            byte[] image = Base64.decode(patientReportObject.getString("image2"), 0);
+                            Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                            imgPatientImage2.setImageBitmap(bitmap);
+                        }
+                        if (patientReportObject.getString("image3") != null){
+                            byte[] image = Base64.decode(patientReportObject.getString("image3"), 0);
+                            Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                            imgPatientImage3.setImageBitmap(bitmap);
+                        }
                     }
                     catch (JSONException e)
                     {
@@ -167,7 +181,7 @@ public class DoctorViewRequestActivity extends AppCompatActivity {
 
             String url = getResources().getString(R.string.base_url) + getResources().getString(R.string.send_to_specialist);
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("specialistName", "Vinay");
+            jsonObject.put("specialistName", "specialist");
             jsonObject.put("patientID", patientId);
 //            Log.d("json:", jsonObject.toString());
             ServiceApiClient.getResponse(getApplicationContext(), url, Request.Method.POST, jsonObject, new ServiceApiCallback()

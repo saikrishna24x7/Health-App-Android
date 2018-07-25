@@ -9,8 +9,8 @@
     <string name="title_comments">Feedback</string>
 
     <string name="app_name">HealthApplication</string>
-    <string name="signup1">Patient Signup Screen</string>
-    <string name="signup2">Doctor Signup Screen</string>
+    <string name="signup1">Patient Signup</string>
+    <string name="signup2">Doctor Signup</string>
     <string name="patientsignup">Patient Signup</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -25,23 +25,23 @@
     <string name="doctorsignup">Doctor Signup</string>
     <string name="signup">Sign up</string>
     <string name="address">Address</string>
-    <string name="login2">Doctor Login Screen</string>
-    <string name="login1">Patient Login Screen</string>
+    <string name="login2">Doctor Login</string>
+    <string name="login1">Patient Login</string>
     <string name="signin">Sign in</string>
     <string name="sensor">View Sensor Data</string>
     <string name="suggestion">View Suggestions</string>
     <string name="logout">Logout</string>
-    <string name="patientscreen">Patient Screen</string>
-    <string name="doctorscreen">Doctor Screen</string>
+    <string name="patientscreen">Patient</string>
+    <string name="doctorscreen">Doctor</string>
     <string name="doctorname">Doctor Name</string>
     <string name="image">Upload File</string>
     <string name="send">Send to Doctor</string>
+    <string name="send_patient">Send to Patient</string>
     <string name="viewrequest">View Requests</string>
     <string name="comment">Comments</string>
     <string name="specialistlogin">Specialist Login</string>
     <string name="specialistsignup">Specialist Signup</string>
-    <string name="specialistscreen">Specialist Screen</string>
-
+    <string name="specialistscreen">Specialist</string>
     <string name="sendToSpecialist">Send to Specialist</string>
 
     <string name="base_url">http://192.168.250.6:8080/</string>
@@ -61,4 +61,7 @@
     <string name="send_comments">api/comments/add</string>
 
     <string name="send_to_specialist">api/patientreport/update</string>
+
+    <string name="family_doctor">Family Doctor</string>
+    <string name="family_specialist">Specialist</string>
 </resources>

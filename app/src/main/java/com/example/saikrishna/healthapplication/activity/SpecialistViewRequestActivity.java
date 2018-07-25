@@ -25,7 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SpecialistViewRequestActivity extends AppCompatActivity {
-    ImageView imgPatientImage;
+    ImageView imgPatientImage1, imgPatientImage2, imgPatientImage3;
     EditText txtComment;
     Button btnSendToPatient;
     String specialistName, patientId;
@@ -47,7 +47,9 @@ public class SpecialistViewRequestActivity extends AppCompatActivity {
         specialistName = getIntent().getExtras().getString("specialistName");
         patientId = getIntent().getExtras().getString("patientId");
         position = getIntent().getExtras().getInt("position");
-        imgPatientImage = findViewById(R.id.patientimage);
+        imgPatientImage1 = findViewById(R.id.patientimage1);
+        imgPatientImage2 = findViewById(R.id.patientimage2);
+        imgPatientImage3 = findViewById(R.id.patientimage3);
 
         final ProgressDialog dialog = new ProgressDialog(SpecialistViewRequestActivity.this);
         dialog.setMessage("Processing...");
@@ -71,9 +73,21 @@ public class SpecialistViewRequestActivity extends AppCompatActivity {
                         dialog.hide();
                         JSONArray dataArray = respObject.getJSONArray("patientReports");
                         JSONObject patientReportObject = dataArray.getJSONObject(position);
-                        byte[] image = Base64.decode(patientReportObject.getString("image"), 0);
-                        Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-                        imgPatientImage.setImageBitmap(bitmap);
+                        if (patientReportObject.getString("image1") != null){
+                            byte[] image = Base64.decode(patientReportObject.getString("image1"), 0);
+                            Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                            imgPatientImage1.setImageBitmap(bitmap);
+                        }
+                        if (patientReportObject.getString("image2") != null){
+                            byte[] image = Base64.decode(patientReportObject.getString("image2"), 0);
+                            Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                            imgPatientImage2.setImageBitmap(bitmap);
+                        }
+                        if (patientReportObject.getString("image3") != null){
+                            byte[] image = Base64.decode(patientReportObject.getString("image3"), 0);
+                            Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                            imgPatientImage3.setImageBitmap(bitmap);
+                        }
                     }
                     catch (JSONException e)
                     {

@@ -30,10 +30,25 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <ImageView
-                android:id="@+id/patientimage"
+                android:id="@+id/patientimage1"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:contentDescription="TODO" />
+
+            <ImageView
+                android:id="@+id/patientimage2"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:contentDescription="TODO" />
+
+            <ImageView
+                android:id="@+id/patientimage3"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -56,7 +71,7 @@
                 android:id="@+id/sendSpecialist"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/send" />
+                android:text="@string/send_patient" />
 
         </LinearLayout>
     </ScrollView>

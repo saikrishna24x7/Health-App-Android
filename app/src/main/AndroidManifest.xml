@@ -41,6 +41,9 @@
         <activity android:name=".activity.SpecialistRequestsActivity" />
         <activity android:name=".activity.SpecialistViewRequestActivity" />
 
+        <activity android:name=".activity.SignupActivity" />
+        <activity android:name=".activity.LoginActivity" />
+
     </application>
 
 </manifest>

@@ -106,8 +106,18 @@ public class SpecialistRequestsActivity extends AppCompatActivity {
                             report.setSpecialistName(object.getString("specialistName"));
                             report.setPatientData(object.getString("patientData"));
                             report.setPatientID(object.getString("patientID"));
-                            byte[] image = Base64.decode(object.getString("image"), 0);
-                            report.setImage(image);
+                            if (object.getString("image1") != null){
+                                byte[] image = Base64.decode(object.getString("image1"), 0);
+                                report.setImage1(image);
+                            }
+                            if (object.getString("image2") != null){
+                                byte[] image = Base64.decode(object.getString("image2"), 0);
+                                report.setImage2(image);
+                            }
+                            if (object.getString("image3") != null){
+                                byte[] image = Base64.decode(object.getString("image3"), 0);
+                                report.setImage3(image);
+                            }
                             reportList.add(report);
                         }
                         mAdapter.notifyDataSetChanged();
